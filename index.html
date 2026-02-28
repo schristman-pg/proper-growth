@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Proper Growth Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F0F0EE;
+    --surface: #E6E6E4;
+    --border: #D0D0CE;
+    --border-light: #DADAD8;
+    --ink: #001B38;
+    --ink-mid: #2A3F55;
+    --ink-muted: #6B7D8F;
+    --ink-faint: #A8B4BC;
+    --green: #1DB300;
+    --green-dark: #179900;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  .page-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: var(--bg);
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .header-meta {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 64px 48px 56px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
+
+  .hero-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .hero-deck {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-mid);
+    max-width: 540px;
+    margin-top: 20px;
+    font-weight: 300;
+  }
+
+  .hero-right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    padding-bottom: 4px;
+  }
+
+  /* Toggle */
+  .toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .toggle-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+
+  .toggle-label:hover { color: var(--ink); }
+
+  .toggle {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .toggle input { display: none; }
+
+  .toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--border);
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 14px; height: 14px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  .toggle input:checked ~ .toggle-track { background: var(--green); border-color: var(--green); }
+  .toggle input:checked ~ .toggle-thumb { transform: translateX(18px); background: #fff; }
+
+  /* ── HORIZONTAL STEPS ── */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .step-col {
+    padding: 40px 36px 36px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.2s ease;
+    cursor: default;
+  }
+
+  .step-col:last-child { border-right: none; }
+
+  .step-col:hover { background: var(--surface); }
+
+  .step-number {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+
+  .step-verb {
+    font-family: 'Manrope', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .step-headline {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink-mid);
+    margin-bottom: 14px;
+  }
+
+  .step-headline em { font-style: normal; font-weight: 700; color: var(--ink); }
+
+  .step-outcome {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    font-family: 'Manrope', sans-serif;
+    padding-left: 10px;
+    border-left: 2px solid var(--green);
+    line-height: 1.5;
+  }
+
+  /* Connector arrows between steps */
+  .step-col:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--ink-faint);
+    z-index: 2;
+    background: var(--bg);
+    padding: 4px 2px;
+    line-height: 1;
+  }
+
+  .step-col:hover::after { background: var(--surface); }
+
+  /* Tier badges in steps */
+  .step-badges {
+    display: flex;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .badge-f { background: var(--surface); color: var(--ink-mid); border: 1px solid var(--border); }
+  .badge-e { background: var(--green); color: #fff; }
+
+  /* ── DETAIL PANELS (toggle) ── */
+  .detail-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    opacity: 0;
+    border-bottom: 0px solid var(--border);
+  }
+
+  .detail-row.open {
+    max-height: 600px;
+    opacity: 1;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .detail-col {
+    padding: 32px 36px;
+    border-right: 1px solid var(--border-light);
+  }
+
+  .detail-col:last-child { border-right: none; }
+
+  .detail-col p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 12px;
+  }
+
+  .detail-col p:last-of-type { margin-bottom: 0; }
+
+  .delivers-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 20px 0 10px;
+  }
+
+  .delivers-list {
+    list-style: none;
+  }
+
+  .delivers-list li {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .delivers-list li::before {
+    content: '—';
+    color: var(--ink-faint);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .tier-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tier-box {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  .tier-box.emb {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .tier-box-lbl {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 5px;
+  }
+
+  .tier-box p {
+    font-size: 11px !important;
+    line-height: 1.55 !important;
+    color: var(--ink-mid) !important;
+    margin-bottom: 0 !important;
+  }
+
+  .tier-box.emb p { color: rgba(245,242,236,0.7) !important; }
+  .tier-box.emb .tier-box-lbl { color: rgba(245,242,236,0.55); }
+
+  /* ── SERVICES SECTION ── */
+  .services-section {
+    padding: 72px 48px 80px;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .section-title em { font-style: normal; color: var(--green); }
+
+  .section-intro {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    font-weight: 300;
+    padding-top: 28px;
+  }
+
+  /* Specialization grid */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .spec-item {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .spec-item:nth-child(odd) { padding-right: 48px; border-right: 1px solid var(--border-light); }
+  .spec-item:nth-child(even) { padding-left: 48px; }
+
+  /* Last two items - remove bottom border */
+  .spec-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .spec-left {}
+
+  .spec-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+  }
+
+  .spec-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .spec-name em { font-style: normal; color: var(--green); }
+
+  .spec-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    font-weight: 300;
+  }
+
+  .spec-items-list {
+    list-style: none;
+    padding-top: 4px;
+  }
+
+  .spec-items-list li {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .spec-items-list li:first-child { padding-top: 0; }
+  .spec-items-list li:last-child { border-bottom: none; }
+
+  .spec-items-list li::before {
+    content: '—';
+    color: var(--ink-faint);
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .outcome-bar {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 24px 32px;
+    margin-top: 28px;
+    border-radius: 2px;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .outcome-bar p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(240,240,238,0.8);
+    line-height: 1.6;
+  }
+
+  .outcome-bar p em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .outcome-bar strong {
+    font-style: normal;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(240,240,238,0.35);
+    white-space: nowrap;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    border-top: 2px solid var(--ink);
+    padding: 56px 48px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .cta-kicker {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+
+  .cta-headline {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .cta-headline em { font-style: normal; color: var(--green); }
+
+  .cta-sub {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    max-width: 400px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 15px 28px;
+    text-decoration: none;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.8; }
+
+  .btn-ghost {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink-muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .footer-line {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-faint);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Inline detail panels — hidden on desktop, shown on mobile */
+  .detail-inline {
+    display: none;
+  }
+
+  .detail-inline.open {
+    display: none; /* still hidden on desktop even when open - desktop uses detail-row */
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .site-header, .hero, .services-section, .cta-section, footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; } /* hide global toggle on mobile */
+
+    /* Steps stack vertically on mobile */
+    .steps-row { grid-template-columns: 1fr; }
+    .step-col { border-right: none; border-bottom: 1px solid var(--border-light); }
+    .step-col:not(:last-child)::after { display: none; }
+
+    /* Desktop detail row hidden on mobile */
+    .detail-row { display: none !important; }
+
+    /* Inline panels visible on mobile when open */
+    .detail-inline {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      border-right: none;
+    }
+    .detail-inline.open { display: block; }
+
+    /* Per-step expand button - mobile only */
+    .step-expand-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 8px 14px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .step-expand-btn:hover { color: var(--ink); border-color: var(--ink-muted); }
+    .step-expand-btn.active { color: var(--ink); border-color: var(--ink); }
+
+    .step-expand-btn .btn-arrow {
+      font-size: 10px;
+      transition: transform 0.25s ease;
+    }
+
+    .step-expand-btn.active .btn-arrow { transform: rotate(180deg); }
+
+    .section-header { grid-template-columns: 1fr; gap: 20px; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .spec-item { grid-template-columns: 1fr; gap: 16px; padding-right: 0 !important; padding-left: 0 !important; border-right: none !important; }
+    .spec-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border-light); }
+    .spec-item:last-child { border-bottom: none; }
+
+    .cta-section { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+    .tier-split { grid-template-columns: 1fr; }
+  }
+
+  /* Hide expand buttons on desktop */
+  @media (min-width: 769px) {
+    .step-expand-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div style="display:flex; align-items:center;">
+    <img src="logo.png" alt="Proper Growth" style="height:36px; width:auto; mix-blend-mode:multiply;">
+  </div>
+  <span class="header-meta">Integrated COO + CFO — $1M to $40M</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-kicker">The Operating Blueprint</p>
+    <h1>From <em>scattered data</em><br>to <em>operating clarity</em></h1>
+    <p class="hero-deck">Most $1M–$40M brands aren't failing because they lack smart people or good products. They're failing because decisions are being made from six different dashboards — and none of them tell the full story.</p>
+  </div>
+  <div class="hero-right">
+    <div class="toggle-wrap">
+      <label class="toggle" for="detail-toggle">
+        <input type="checkbox" id="detail-toggle">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+      <label class="toggle-label" for="detail-toggle">Show how it works</label>
+    </div>
+  </div>
+</section>
+
+<!-- HORIZONTAL STEPS -->
+<div class="steps-row" id="steps-row">
+  <div class="step-col fade-in">
+    <p class="step-number">Step 01</p>
+    <span class="step-verb">Organize</span>
+    <p class="step-headline">Build a single version of the truth from every data source you have</p>
+    <p class="step-outcome">Your data stops being scattered. Decisions stop being guesses.</p>
+    <div class="step-badges">
+      <span class="badge badge-f">Foundation</span>
+      <span class="badge badge-e">Embedded</span>
+    </div>
+    <button class="step-expand-btn" data-target="detail-1">
+      <span class="btn-text">See how it works</span>
+      <span class="btn-arrow">▼</span>
+    </button>
+    <!-- Inline detail for mobile -->
+    <div class="detail-col detail-inline" id="detail-1">
+      <p>We build automated workflows that extract data from every source, use AI to transform and enrich it, and deliver it structured the way it should be analyzed.</p>
+      <p class="delivers-label">What gets built</p>
+      <ul class="delivers-list">
+        <li>Automated extraction workflows</li>
+        <li>AI-powered data transformation</li>
+        <li>Unified cash + margin view</li>
+        <li>Inventory and sell-through feeds</li>
+        <li>Single-cadence reporting layer</li>
+      </ul>
+      <div class="tier-split">
+        <div class="tier-box">
+          <p class="tier-box-lbl">Foundation</p>
+          <p>We build it, run it, and maintain it. Clean data without managing the infrastructure.</p>
+        </div>
+        <div class="tier-box emb">
+          <p class="tier-box-lbl">Embedded</p>
+          <p>Same infrastructure, integrated into the full operating engagement from day one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-col fade-in">
+    <p class="step-number">Step 02</p>
+    <span class="step-verb">Diagnose</span>
+    <p class="step-headline">See what's actually happening — and <em>why</em></p>
+    <p class="step-outcome">The right calls become obvious. The expensive surprises stop.</p>
+    <div class="step-badges">
+      <span class="badge badge-f">Foundation</span>
+      <span class="badge badge-e">Embedded</span>
+    </div>
+    <button class="step-expand-btn" data-target="detail-2">
+      <span class="btn-text">See how it works</span>
+      <span class="btn-arrow">▼</span>
+    </button>
+    <!-- Inline detail for mobile -->
+    <div class="detail-col detail-inline" id="detail-2">
+      <p>Cash position. Contribution margin by SKU and channel. Inventory exposure. Where growth is compounding and where it's quietly leaking.</p>
+      <p>Most brands at $1M–$40M have never seen all of this in one place, updated on the same cadence. When you do, the root cause of most problems becomes clear.</p>
+      <p class="delivers-label">What gets surfaced</p>
+      <ul class="delivers-list">
+        <li>Rolling cash flow analysis</li>
+        <li>Contribution margin by SKU + channel</li>
+        <li>Inventory aging and risk exposure</li>
+        <li>Forecast vs actual variance</li>
+        <li>Margin leakage identification</li>
+      </ul>
+      <div class="tier-split">
+        <div class="tier-box">
+          <p class="tier-box-lbl">Foundation</p>
+          <p>Monthly diagnostic review with model updates and prioritized findings.</p>
+        </div>
+        <div class="tier-box emb">
+          <p class="tier-box-lbl">Embedded</p>
+          <p>Continuous analysis, scenario modeling, and proactive decision support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-col fade-in">
+    <p class="step-number">Step 03</p>
+    <span class="step-verb">Operate</span>
+    <p class="step-headline">Embedded operators who know the numbers cold and sit inside the decisions</p>
+    <p class="step-outcome">You don't just see what to do. Someone helps you do it.</p>
+    <div class="step-badges">
+      <span class="badge badge-f">Foundation</span>
+      <span class="badge badge-e">Embedded</span>
+    </div>
+    <button class="step-expand-btn" data-target="detail-3">
+      <span class="btn-text">See how it works</span>
+      <span class="btn-arrow">▼</span>
+    </button>
+    <!-- Inline detail for mobile -->
+    <div class="detail-col detail-inline" id="detail-3">
+      <p>Not recommendations in a deck. Operators embedded inside the business — running the planning cadence, aligning marketing with inventory reality, allocating capital, making the hard calls with you.</p>
+      <p>Most advisors do finance or ops. The problems don't separate that cleanly.</p>
+      <p class="delivers-label">What we operate across</p>
+      <ul class="delivers-list">
+        <li>Cash and capital allocation</li>
+        <li>Demand planning + inventory strategy</li>
+        <li>Marketing ↔ ops alignment</li>
+        <li>Org design and capacity</li>
+        <li>Weekly operating cadence</li>
+      </ul>
+      <div class="tier-split">
+        <div class="tier-box">
+          <p class="tier-box-lbl">Foundation</p>
+          <p>Oversight and guidance informed by the organized data. Light retainer, real operator thinking.</p>
+        </div>
+        <div class="tier-box emb">
+          <p class="tier-box-lbl">Embedded</p>
+          <p>Full fractional COO + CFO. Weekly sessions, async support, hands-on execution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL PANELS (desktop toggle) -->
+<div class="detail-row" id="detail-row">
+  <div class="detail-col">
+    <p>Your data exists. It's just everywhere — Shopify, your 3PL, Meta, a spreadsheet your bookkeeper built two years ago, three dashboards nobody fully trusts.</p>
+    <p>We build automated workflows that extract data from every source, use AI to transform and enrich it, and deliver it structured the way it should be analyzed.</p>
+    <p class="delivers-label">What gets built</p>
+    <ul class="delivers-list">
+      <li>Automated extraction workflows</li>
+      <li>AI-powered data transformation</li>
+      <li>Unified cash + margin view</li>
+      <li>Inventory and sell-through feeds</li>
+      <li>Single-cadence reporting layer</li>
+    </ul>
+    <div class="tier-split">
+      <div class="tier-box">
+        <p class="tier-box-lbl">Foundation</p>
+        <p>We build it, run it, and maintain it. Clean data without managing the infrastructure.</p>
+      </div>
+      <div class="tier-box emb">
+        <p class="tier-box-lbl">Embedded</p>
+        <p>Same infrastructure, integrated into the full operating engagement from day one.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-col">
+    <p>Cash position. Contribution margin by SKU and channel. Inventory exposure. Where growth is compounding and where it's quietly leaking.</p>
+    <p>Most brands at $1M–$40M have never seen all of this in one place, updated on the same cadence. When you do, the root cause of most problems becomes clear.</p>
+    <p class="delivers-label">What gets surfaced</p>
+    <ul class="delivers-list">
+      <li>Rolling cash flow analysis</li>
+      <li>Contribution margin by SKU + channel</li>
+      <li>Inventory aging and risk exposure</li>
+      <li>Forecast vs actual variance</li>
+      <li>Margin leakage identification</li>
+    </ul>
+    <div class="tier-split">
+      <div class="tier-box">
+        <p class="tier-box-lbl">Foundation</p>
+        <p>Monthly diagnostic review with model updates and prioritized findings.</p>
+      </div>
+      <div class="tier-box emb">
+        <p class="tier-box-lbl">Embedded</p>
+        <p>Continuous analysis, scenario modeling, and proactive decision support.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-col">
+    <p>Not recommendations in a deck. Operators embedded inside the business — running the planning cadence, aligning marketing with inventory reality, allocating capital, making the hard calls with you.</p>
+    <p>Most advisors do finance or ops. The problems don't separate that cleanly.</p>
+    <p class="delivers-label">What we operate across</p>
+    <ul class="delivers-list">
+      <li>Cash and capital allocation</li>
+      <li>Demand planning + inventory strategy</li>
+      <li>Marketing ↔ ops alignment</li>
+      <li>Org design and capacity</li>
+      <li>Weekly operating cadence</li>
+    </ul>
+    <div class="tier-split">
+      <div class="tier-box">
+        <p class="tier-box-lbl">Foundation</p>
+        <p>Oversight and guidance informed by the organized data. Light retainer, real operator thinking.</p>
+      </div>
+      <div class="tier-box emb">
+        <p class="tier-box-lbl">Embedded</p>
+        <p>Full fractional COO + CFO. Weekly sessions, async support, hands-on execution.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES / SPECIALIZATION SECTION -->
+<section class="services-section">
+
+  <div class="section-header">
+    <div>
+      <p class="section-kicker">What Proper Growth does</p>
+      <h2 class="section-title">The integrated<br><em>COO + CFO model</em></h2>
+    </div>
+    <p class="section-intro">Most advisors either understand numbers without execution, or understand execution without financial consequence. Proper Growth operates at the intersection — because that's where the decisions that actually matter live.</p>
+  </div>
+
+  <div class="spec-grid">
+
+    <!-- 1 -->
+    <div class="spec-item">
+      <div class="spec-left">
+        <p class="spec-tag">CFO — Financial Clarity</p>
+        <h3 class="spec-name">Cash &amp; <em>Margin Control</em></h3>
+        <p class="spec-desc">Stop guessing at your cash position. Build a financial operating layer that gives leadership a real-time view of what matters.</p>
+      </div>
+      <div>
+        <ul class="spec-items-list">
+          <li>Rolling cash flow forecasts</li>
+          <li>Contribution margin modeling</li>
+          <li>Unit economics by SKU + channel</li>
+          <li>Forecast confidence scoring</li>
+          <li>Decision-ready financial views</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="spec-item">
+      <div class="spec-left">
+        <p class="spec-tag">COO — Demand Planning</p>
+        <h3 class="spec-name">Inventory as a <em>Lever</em></h3>
+        <p class="spec-desc">Inventory isn't a supply chain problem. It's a capital allocation problem. We build the systems to manage it like one.</p>
+      </div>
+      <div>
+        <ul class="spec-items-list">
+          <li>Open-to-Buy (OTB) frameworks</li>
+          <li>Inventory risk modeling</li>
+          <li>SKU rationalization</li>
+          <li>Dead stock liquidation planning</li>
+          <li>Lead time compression strategies</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="spec-item">
+      <div class="spec-left">
+        <p class="spec-tag">COO — GTM Alignment</p>
+        <h3 class="spec-name">Marketing plans that <em>ops can actually support</em></h3>
+        <p class="spec-desc">Fewer great ideas that blow up execution. Marketing, ops, and finance operating from the same plan on the same cadence.</p>
+      </div>
+      <div>
+        <ul class="spec-items-list">
+          <li>Marketing plans grounded in inventory</li>
+          <li>Channel expansion modeling</li>
+          <li>Promo and pricing tradeoff analysis</li>
+          <li>Planning calendars that drive execution</li>
+          <li>Innovation vs exploitation balance</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="spec-item">
+      <div class="spec-left">
+        <p class="spec-tag">COO + CFO — Org &amp; Opex</p>
+        <h3 class="spec-name">People and process that <em>don't eat margin</em></h3>
+        <p class="spec-desc">Capacity, ownership clarity, and the hard decisions about where to invest in people — and where not to.</p>
+      </div>
+      <div>
+        <ul class="spec-items-list">
+          <li>Role clarity and ownership mapping</li>
+          <li>Cost-to-output analysis</li>
+          <li>Hire vs automate vs cut decisions</li>
+          <li>Interim operating structures</li>
+          <li>Capacity vs utilization audits</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="outcome-bar">
+    <p>"Growth without control is borrowed time. Proper Growth closes the gap between <em>we're growing</em> and <em>we actually understand what's happening underneath.</em>"</p>
+    <strong>The Proper Growth thesis</strong>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div>
+    <p class="cta-kicker">Two tiers. One model.</p>
+    <p class="cta-headline">Built for brands at $1M–$40M who are <em>done making decisions in the dark.</em></p>
+    <p class="cta-sub">Foundation for brands building the operating and financial infrastructure. Embedded for brands that need a full operator in the room.</p>
+  </div>
+  <div class="cta-buttons">
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3C0xk3iiiCplw7lw_yWnYBFP9iNrPch9Kv3hOqffKumS0AAuT5jAnqu5io12GDFiYPV7EYicv3" target="_blank" class="btn-primary">Book a discovery call</a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Proper Growth</span>
+  <span class="footer-line">Too operational for VCs. Too financial for marketers. That's the point.</span>
+</footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  const toggle = document.getElementById('detail-toggle');
+  const detailRow = document.getElementById('detail-row');
+  const label = document.querySelector('.toggle-label');
+
+  // Desktop: global toggle opens the three-column row
+  toggle.addEventListener('change', () => {
+    const on = toggle.checked;
+    label.textContent = on ? 'Hide detail' : 'Show how it works';
+    detailRow.classList.toggle('open', on);
+  });
+
+  // Mobile: per-step expand buttons
+  document.querySelectorAll('.step-expand-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const panel = document.getElementById(targetId);
+      const isOpen = panel.classList.contains('open');
+
+      panel.classList.toggle('open', !isOpen);
+      btn.classList.toggle('active', !isOpen);
+      btn.querySelector('.btn-text').textContent = isOpen ? 'See how it works' : 'Hide detail';
+    });
+  });
+</script>
+
+</body>
+</html>
